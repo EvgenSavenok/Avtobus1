@@ -1,0 +1,19 @@
+﻿version: '3.8'
+
+services:
+  mysql_db:
+    image: mariadb:latest 
+    container_name: url_shortener_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecretpassword
+      MYSQL_DATABASE: UrlShortenerDb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
