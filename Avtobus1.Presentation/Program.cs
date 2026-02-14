@@ -16,6 +16,8 @@ builder.Services.AddScoped<IUrlService, UrlService>();
 
 var app = builder.Build();
 
+app.UseExceptionHandler("/Home/Error");
+
 app.ApplyMigrations();
 
 app.UseHttpsRedirection();

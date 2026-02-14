@@ -14,10 +14,22 @@
 }
 
 <div class="card p-4 mb-5 shadow-sm">
-    <form asp-action="Shorten" method="post" class="row g-3">
-        <div class="col-md-10">
-            <input asp-for="NewUrl" class="form-control form-control-lg" placeholder="Вставьте длинную ссылку здесь (https://...)" />
+    <form asp-action="Shorten" method="post" class="row g-3 needs-validation" id="shortenForm" novalidate>
+        
+        <div class="col-md-10 position-relative">
+            <input asp-for="NewUrl" 
+                   type="url" 
+                   class="form-control form-control-lg" 
+                   id="urlInput"
+                   placeholder="Вставьте длинную ссылку (https://...)" 
+                   required 
+                   pattern="https?://.+" />
+            
+            <div class="invalid-feedback">
+                Пожалуйста, введите корректный URL (начинающийся с http:// или https://).
+            </div>
         </div>
+        
         <div class="col-md-2">
             <button type="submit" class="btn btn-primary btn-lg w-100">Сократить</button>
         </div>
@@ -27,48 +39,77 @@
 <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
         <thead class="table-dark">
-            <tr>
-                <th>Длинный URL</th>
-                <th>Короткий URL</th>
-                <th>Клики</th>
-                <th>Дата</th>
-                <th>Действия</th>
-            </tr>
+        <tr>
+            <th>Длинный URL</th>
+            <th>Короткий URL</th>
+            <th>Клики</th>
+            <th>Дата</th>
+            <th>Действия</th>
+        </tr>
         </thead>
         <tbody>
-            @if (Model.Urls.Any())
-            {
-                @foreach (var url in Model.Urls)
-                {
-                    <tr>
-                        <td class="text-truncate" style="max-width: 300px;" title="@url.OriginalUrl">
-                            <a href="@url.OriginalUrl" target="_blank">@url.OriginalUrl</a>
-                        </td>
-                        <td>
-                            <a href="/@url.ShortCode" target="_blank" class="fw-bold text-success">
-                                @Context.Request.Scheme://@Context.Request.Host/@url.ShortCode
-                            </a>
-                        </td>
-                        <td>
-                            <span class="badge bg-info text-dark">@url.ClickCount</span>
-                        </td>
-                        <td>@url.CreatedAt.ToLocalTime().ToString("g")</td>
-                        <td>
-                            <form asp-action="Delete" asp-route-id="@url.UrlId" method="post" onsubmit="return confirm('Удалить запись?');">
-                                <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
-                            </form>
-                        </td>
-                    </tr>
-                }
-            }
-            else
+        @if (Model.Urls.Any())
+        {
+            @foreach (var url in Model.Urls)
             {
                 <tr>
-                    <td colspan="5" class="text-center text-muted py-4">
-                        Список ссылок пуст. Создайте первую!
+                    <td class="text-truncate" style="max-width: 300px;" title="@url.OriginalUrl">
+                        <a href="@url.OriginalUrl" target="_blank">@url.OriginalUrl</a>
+                    </td>
+                    <td>
+                        <a href="/@url.ShortCode" target="_blank" class="fw-bold text-success">
+                            @Context.Request.Scheme://@Context.Request.Host/@url.ShortCode
+                        </a>
+                    </td>
+                    <td>
+                        <span class="badge bg-info text-dark">@url.ClickCount</span>
+                    </td>
+                    <td>@url.CreatedAt.ToLocalTime().ToString("g")</td>
+                    <td>
+                        <form asp-action="Delete" asp-route-id="@url.UrlId" method="post" onsubmit="return confirm('Удалить запись?');">
+                            <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                        </form>
                     </td>
                 </tr>
             }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted py-4">
+                    Список ссылок пуст. Создайте первую!
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
 </div>
+
+@section Scripts {
+    <script>
+        (function () {
+            'use strict'
+
+            var form = document.querySelector('#shortenForm')
+            var input = document.querySelector('#urlInput')
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault() 
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+
+            input.addEventListener('input', function () {
+                if (form.classList.contains('was-validated')) {
+                    if (input.checkValidity()) {
+                        input.classList.remove('is-invalid');
+                        input.classList.add('is-valid');
+                    }
+                }
+            });
+        })()
+    </script>
+}
