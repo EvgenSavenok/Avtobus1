@@ -10,4 +10,13 @@
       <ProjectReference Include="..\Avtobus1.Application\Avtobus1.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.3" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.1.2" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.1.2" />
+    </ItemGroup>
+
 </Project>

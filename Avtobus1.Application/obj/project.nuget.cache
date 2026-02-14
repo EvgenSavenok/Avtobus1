@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "EQ8PDEzcIeU=",
+  "dgSpecHash": "M5eXPTcvNBM=",
   "success": true,
   "projectFilePath": "C:\\Users\\eugen\\RiderProjects\\Avtobus1\\Avtobus1\\Avtobus1.Application\\Avtobus1.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\eugen\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
+    "C:\\Users\\eugen\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.1\\fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
+    "C:\\Users\\eugen\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
+    "C:\\Users\\eugen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
