@@ -1,0 +1,29 @@
+@model ErrorViewModel
+
+@{
+    ViewData["Title"] = "Ошибка";
+}
+
+<div class="container mt-5 text-center">
+    <div class="card border-danger shadow">
+        <div class="card-header bg-danger text-white">
+            <h1 class="display-4">Ошибка @Model.StatusCode</h1>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title text-danger">Что-то пошло не так</h3>
+            
+            <p class="card-text lead mt-4">
+                @Model.Message
+            </p>
+
+            @if (Model.ShowRequestId)
+            {
+                <div class="mt-4 text-muted small">
+                    <p>Request ID: <code>@Model.RequestId</code></p>
+                </div>
+            }
+            
+            <a href="/" class="btn btn-primary mt-3">Вернуться на главную</a>
+        </div>
+    </div>
+</div>

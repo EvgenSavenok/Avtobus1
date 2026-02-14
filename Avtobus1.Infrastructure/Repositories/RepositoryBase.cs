@@ -5,6 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Avtobus1.Infrastructure.Repositories;
 
+/// <summary>
+/// Repository pattern will be suitable here because it allows us to change DB without any problems
+/// </summary>
+/// <param name="repositoryContext"></param>
+/// <typeparam name="T"></typeparam>
 public abstract class RepositoryBase<T>(UrlDbContext repositoryContext) : IRepositoryBase<T>
     where T : class
 {

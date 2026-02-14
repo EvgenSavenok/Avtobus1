@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Avtobus1.Infrastructure.Configurations;
 
+/// <summary>
+/// To improve performance was implemented index
+/// </summary>
 public class UrlConfiguration
 {
     public void Configure(EntityTypeBuilder<UrlRecord> builder)
