@@ -3,6 +3,10 @@ using Avtobus1.Domain.Entities;
 
 namespace Avtobus1.Application.Mappers;
 
+/// <summary>
+/// Used manual mapping because AutoMapper is slower and many errors
+/// might be during reflection in the runtime, but errors in this methods can be tracked during compilation
+/// </summary>
 public static class UrlMappingExtensions
 {
     public static UrlDto ToDto(this UrlRecord entity)
