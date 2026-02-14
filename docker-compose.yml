@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.6
+    container_name: avtobus1_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecretpassword
+      MYSQL_DATABASE: UrlShortenerDb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    image: avtobus1_app
+    container_name: avtobus1_app
+    build:
+      context: .
+      dockerfile: Avtobus1.Presentation/Dockerfile
+    restart: on-failure
+    ports:
+      - "5000:8080" 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Port=3306;Database=UrlShortenerDb;User=root;Password=supersecretpassword;
+    depends_on:
+      - db
+
+volumes:
+  db_data:
