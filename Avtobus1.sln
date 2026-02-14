@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avtobus1.Application", "Avt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avtobus1.Infrastructure", "Avtobus1.Infrastructure\Avtobus1.Infrastructure.csproj", "{7B07C5C0-7257-4DBB-B28B-ED358E53D45C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avtobus1Tests", "Avtobus1Tests\Avtobus1Tests.csproj", "{570D1145-A7E9-449E-B834-F797D5190232}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{7B07C5C0-7257-4DBB-B28B-ED358E53D45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B07C5C0-7257-4DBB-B28B-ED358E53D45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B07C5C0-7257-4DBB-B28B-ED358E53D45C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{570D1145-A7E9-449E-B834-F797D5190232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570D1145-A7E9-449E-B834-F797D5190232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570D1145-A7E9-449E-B834-F797D5190232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570D1145-A7E9-449E-B834-F797D5190232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

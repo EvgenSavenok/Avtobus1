@@ -12,7 +12,7 @@ public static class UrlMappingExtensions
             UrlId = entity.Id,
             OriginalUrl = entity.OriginalUrl,
             ShortCode = entity.ShortCode,
-            ShortUrl = $"http://localhost:5000/{entity.ShortCode}", 
+            ShortUrl = $"/{entity.ShortCode}",
             ClickCount = entity.ClickCount,
             CreatedAt = entity.CreatedAt
         };
