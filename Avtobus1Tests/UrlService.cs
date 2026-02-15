@@ -37,8 +37,7 @@ public class UrlServiceTests
         _mockValidator
             .Setup(v => v.ValidateAsync(It.IsAny<UrlRecord>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new ValidationResult());
-
-        // Код уникален
+        
         _mockUrlRepo
             .Setup(r => r.IsCodeUniqueAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
@@ -63,8 +62,7 @@ public class UrlServiceTests
     {
         // Arrange
         var inputDto = new UrlDto { OriginalUrl = "" };
-
-        // Валидатор возвращает ошибку
+        
         var failures = new List<ValidationFailure> { new("OriginalUrl", "Url cannot be empty") };
         _mockValidator
             .Setup(v => v.ValidateAsync(It.IsAny<UrlRecord>(), It.IsAny<CancellationToken>()))
